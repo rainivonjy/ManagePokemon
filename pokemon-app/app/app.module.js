@@ -13,6 +13,7 @@ var list_pokemon_component_1 = require("./pokemons/list-pokemon.component");
 var detail_pokemon_component_1 = require("./pokemons/detail-pokemon.component");
 var shadow_card_directive_1 = require("./pokemons/shadow-card.directive");
 var pokemon_type_color_pipe_1 = require("./pokemons/pokemon-type-color.pipe");
+var page_not_found_component_1 = require("./page-not-found.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +27,7 @@ AppModule = __decorate([
             shadow_card_directive_1.ShadowCardDirective,
             pokemon_type_color_pipe_1.PokemonTypeColorPipe,
             list_pokemon_component_1.ListPokemonComponent,
-            detail_pokemon_component_1.DetailPokemonComponent
+            detail_pokemon_component_1.DetailPokemonComponent, page_not_found_component_1.PageNotFoundComponent,
         ],
         bootstrap: [app_component_1.AppComponent]
     })
