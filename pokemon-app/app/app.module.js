@@ -7,7 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
+var list_pokemon_component_1 = require("./pokemons/list-pokemon.component");
+var detail_pokemon_component_1 = require("./pokemons/detail-pokemon.component");
+var shadow_card_directive_1 = require("./pokemons/shadow-card.directive");
+var pokemon_type_color_pipe_1 = require("./pokemons/pokemon-type-color.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -15,16 +20,15 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
+        imports: [platform_browser_1.BrowserModule, app_routing_module_1.AppRoutingModule],
         declarations: [
             app_component_1.AppComponent,
+            shadow_card_directive_1.ShadowCardDirective,
+            pokemon_type_color_pipe_1.PokemonTypeColorPipe,
+            list_pokemon_component_1.ListPokemonComponent,
+            detail_pokemon_component_1.DetailPokemonComponent
         ],
-        imports: [
-            platform_browser_1.BrowserModule
-        ],
-        bootstrap: [
-            app_component_1.AppComponent,
-        ],
-        providers: [],
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;
