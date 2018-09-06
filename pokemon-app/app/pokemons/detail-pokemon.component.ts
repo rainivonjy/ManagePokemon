@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pokemon';
-
+import { PokemonsService } from './pokemons.service';
 @Component({
 	selector: 'detail-pokemon',
 	template: `
@@ -50,14 +50,15 @@ import { POKEMONS } from './mock-pokemon';
   </div>
   </div>
   <h4 *ngIf='!pokemon' class="center">Aucun pokémon à afficher !</h4>
-  `
+  `,
+  providers: [PokemonsService] // on déclare un fournisseur pour le service.
 })
 export class DetailPokemonComponent implements OnInit {
 
 	pokemons: Pokemon[] = null;
 	pokemon: Pokemon = null;
 
-	constructor(private route: ActivatedRoute, private router: Router) {}
+	constructor(private route: ActivatedRoute,  private pokemonsService: PokemonsService) {}
 
 	ngOnInit(): void {
 		this.pokemons = POKEMONS;
@@ -71,7 +72,7 @@ export class DetailPokemonComponent implements OnInit {
 	}
 
 	goBack(): void {
-		this.router.navigate(['/pokemons']);
+    window.history.back();
 	}
 
 }

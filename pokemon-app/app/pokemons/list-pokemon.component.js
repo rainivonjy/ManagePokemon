@@ -9,15 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var mock_pokemon_1 = require("./mock-pokemon");
 var router_1 = require("@angular/router");
+var pokemons_service_1 = require("./pokemons.service");
 var ListPokemonComponent = (function () {
-    function ListPokemonComponent(router) {
+    function ListPokemonComponent(router, pokemonsService) {
         this.router = router;
+        this.pokemonsService = pokemonsService;
         this.pokemons = null;
     }
     ListPokemonComponent.prototype.ngOnInit = function () {
-        this.pokemons = mock_pokemon_1.POKEMONS;
+        this.pokemons = this.pokemonsService.getPokemons();
+        ;
     };
     ListPokemonComponent.prototype.selectPokemon = function (pokemon) {
         console.log('Vous avez selectionné ' + pokemon.name);
@@ -29,9 +31,10 @@ var ListPokemonComponent = (function () {
 ListPokemonComponent = __decorate([
     core_1.Component({
         selector: 'list-pokemon',
-        template: "\n    <h1 class='center'>Pok\u00E9mons</h1>\n      <div class='container'>\n        <div class=\"row\">\n        <div *ngFor='let pokemon of pokemons' class=\"col s6 m4\">\n          <div class=\"card horizontal\" (click)=\"selectPokemon(pokemon)\" pkmn-shadow-card>\n            <div class=\"card-image\">\n              <img [src]=\"pokemon.picture\">\n            </div>\n            <div class=\"card-stacked\">\n              <div class=\"card-content\">\n                <p>{{ pokemon.name }}</p>\n                <p><small>{{ pokemon.created | date:\"dd/MM/yyyy\" }}</small></p>\n                <span *ngFor='let type of pokemon.types' class=\"{{ type | pokemonTypeColor }}\">{{ type }}</span>\n              </div>\n            </div>\n          </div>\n        </div>\n        </div>\n      </div>\n  "
+        template: "\n    <h1 class='center'>Pok\u00E9mons</h1>\n      <div class='container'>\n        <div class=\"row\">\n        <div *ngFor='let pokemon of pokemons' class=\"col s6 m4\">\n          <div class=\"card horizontal\" (click)=\"selectPokemon(pokemon)\" pkmn-shadow-card>\n            <div class=\"card-image\">\n              <img [src]=\"pokemon.picture\">\n            </div>\n            <div class=\"card-stacked\">\n              <div class=\"card-content\">\n                <p>{{ pokemon.name }}</p>\n                <p><small>{{ pokemon.created | date:\"dd/MM/yyyy\" }}</small></p>\n                <span *ngFor='let type of pokemon.types' class=\"{{ type | pokemonTypeColor }}\">{{ type }}</span>\n              </div>\n            </div>\n          </div>\n        </div>\n        </div>\n      </div>\n  ",
+        providers: [pokemons_service_1.PokemonsService] // on déclare un fournisseur pour le service.
     }),
-    __metadata("design:paramtypes", [router_1.Router])
+    __metadata("design:paramtypes", [router_1.Router, pokemons_service_1.PokemonsService])
 ], ListPokemonComponent);
 exports.ListPokemonComponent = ListPokemonComponent;
 //# sourceMappingURL=list-pokemon.component.js.map
